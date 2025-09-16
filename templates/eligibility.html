@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Donation | Complete Guide</title>
+  <style>
+       @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+       * { margin: 0; padding: 0; }
+
+       body {
+           font-family: 'Segoe UI', Arial, sans-serif;
+           background: #e0f7ff;
+           color: #1b1b1b;
+           line-height: 1.6;
+       }
+
+       header {
+           background-color: white;
+           height: 18%;
+           width: 100%;
+           z-index: 10;
+           position: fixed;
+           top: 0;
+           font-weight: 100;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+       }
+
+       .header-logo {
+           float: left;
+           padding-left: 30px;
+       }
+
+       .header-logo > img {
+           width: 70%;
+       }
+
+       .header-list ul {
+           margin: 0;
+           padding: 0;
+       }
+
+       .header-list ul li {
+           float: right;
+           padding-left: 30px;
+           padding-top: 30px;
+           list-style: none;
+           padding-right: 40px;
+       }
+
+       .header-list ul li a {
+           text-decoration: none;
+           display: block;
+           text-transform: uppercase;
+           color: black;
+           font-size: 22px;
+           font-family: 'Raleway', sans-serif;
+           letter-spacing: 2px;
+           font-weight: 600;
+           padding: 20px;
+           transition: all ease 0.5s;
+       }
+
+       .header-list ul li a:hover {
+           background-color: #DC143C;
+           color: white;
+       }
+
+       .hero {
+           background: linear-gradient(to right, #208ef4, #f62261);
+           color: white;
+           text-align: center;
+           padding: 120px 20px 80px;
+           margin-top: 70px;
+       }
+
+       .hero h1 {
+           font-size: 2.8em;
+           margin-bottom: 15px;
+           text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+       }
+
+       .hero p {
+           font-size: 1.2em;
+           line-height: 1.5;
+       }
+
+       section {
+           max-width: 900px;
+           margin: 30px auto;
+           padding: 25px;
+           background: #ffffffcc;
+           border-radius: 12px;
+           box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+           backdrop-filter: blur(6px);
+           transition: transform 0.3s, box-shadow 0.3s;
+       }
+
+       section:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+       }
+
+       h2 {
+           color: #f62261;
+           border-left: 6px solid #208ef4;
+           padding-left: 12px;
+           background: #ffdde1;
+           border-radius: 6px;
+           margin-bottom: 15px;
+       }
+
+       ul { padding-left: 25px; }
+       li { margin: 8px 0; }
+
+       iframe {
+           width: 100%;
+           height: 600px;
+           border: none;
+           border-radius: 8px;
+           margin-top: 15px;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+       }
+
+       .faq {
+           cursor: pointer;
+           padding: 12px;
+           border: 1px solid #555;
+           margin: 8px 0;
+           border-radius: 8px;
+           background: #fff;
+           transition: background 0.3s, transform 0.2s;
+       }
+       .faq:hover { 
+           background: #f8b6c3; 
+           transform: scale(1.02);
+       }
+       .faq.active { background: #ffdde1; }
+       .faq-content { display: none; padding: 10px; color: #555; }
+       .faq.active .faq-content { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="header-logo"><img src="static/others/bb_logo(white).png"></div>
+    <div class="header-list">
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('donate') }}">Donate</a></li>
+        <li><a href="{{ url_for('find_donour') }}">Accept</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Donate Blood, Save Lives🩸</h1>
+  <p>Learn everything about blood donation — eligibility, health benefits, and more.</p>
+</div>
+
+<section id="about">
+  <h2>About Blood Donation</h2>
+  <p>Blood donation is a voluntary act where individuals donate blood for medical use. It supports surgeries, trauma care, chronic illnesses, and more. The first recorded blood transfusion in India took place in 1939, and since then, it has become a vital part of healthcare.</p>
+</section>
+
+<section id="types-blood">
+  <h2>Types of Blood & Compatibility</h2>
+  <ul>
+    <li><b>A:</b> Has A antigen; Anti-B antibodies</li>
+    <li><b>B:</b> Has B antigen; Anti-A antibodies</li>
+    <li><b>AB:</b> Has A & B antigens; Universal recipient</li>
+    <li><b>O:</b> No antigens; Universal donor</li>
+  </ul>
+  <p>Rh factor further classifies into Positive and Negative types.</p>
+</section>
+
+<section id="donations">
+  <h2>Types of Donations</h2>
+  <ul>
+    <li><b>Whole Blood:</b> Every 56 days 🩸</li>
+    <li><b>Platelets (Apheresis):</b> Every 7 days 🧪</li>
+    <li><b>Plasma:</b> Every 28 days 💧</li>
+    <li><b>Double Red Cells:</b> Every 112 days 🩸</li>
+  </ul>
+</section>
+
+<section id="eligibility">
+  <h2>Eligibility Criteria</h2>
+  <ul>
+    <li>Health: Must be in good health, mentally alert, physically fit</li>
+    <li>Age: 18–65 years (first-time donors ≤60 years)</li>
+    <li>Weight: ≥50 kg; 350 ml for 45–55 kg, 450 ml if >55 kg</li>
+    <li>Donation Interval: Men: 3 months; Women: 4 months. Platelets: 48 hrs gap, max 24 times/year</li>
+    <li>Blood Pressure: 100–140 / 60–90 mmHg</li>
+    <li>Pulse: 60–100/min; Temperature: Normal (≤37°C)</li>
+    <li>Hemoglobin: ≥12.5 g/dL</li>
+    <li>Meals: Donor should not be fasting; last meal ≥4 hrs before donation. No alcohol intake within 24 hrs</li>
+    <li>Women: Not during pregnancy, breastfeeding, menstruation</li>
+    <li>Risk Behaviors: Not involved in HIV/Hepatitis risk activities</li>
+    <li>Travel: Recent travel to malaria, dengue, Zika, or endemic regions may defer temporarily</li>
+    <li>Medical Conditions: Chronic illnesses (heart disease, cancer, epilepsy, diabetes on insulin) → ineligible</li>
+    <li>Surgeries: Major surgery (12 months), minor surgery (6 months), transfusion (12 months)</li>
+    <li>Infections: Hepatitis B/C, HIV/AIDS, TB, syphilis, leprosy → permanently deferred</li>
+  </ul>
+  
+  <h3>📄 View Full Document</h3>
+  <p>You can read the detailed official eligibility guidelines here:</p>
+  <iframe src="{{ url_for('static', filename='others/eligibility.pdf') }}"></iframe>
+</section>
+
+<section id="benefits">
+  <h2>Benefits of Blood Donation</h2>
+  <ul>
+    <li>Saves lives — one pint can save up to 3 people</li>
+    <li>Improves heart health, lowers iron overload</li>
+    <li>Free mini health check-up each time</li>
+    <li>Boosts community solidarity</li>
+  </ul>
+</section>
+
+<section id="diet">
+  <h2>Diet After Donation</h2>
+  <ul>
+    <li>Iron-rich foods: Spinach, beans, lean meat 🥩🥗</li>
+    <li>Vitamin C foods: Citrus fruits, bell peppers 🍊🌶️</li>
+    <li>Stay hydrated: Drink plenty of water 💧</li>
+    <li>Avoid alcohol and heavy exercise for 24 hrs 🚫🍷🏋️</li>
+  </ul>
+</section>
+
+<section id="facts">
+  <h2>Key Facts & FAQs</h2>
+  <ul>
+    <li>🩸 One unit (470ml) can save 3 lives.</li>
+    <li>🩸 O- is universal donor; AB+ is universal recipient.</li>
+    <li>🩸 Blood has a short shelf life (RBCs 42 days, Platelets 5 days).</li>
+  </ul>
+  <div class="faq">Q. How often can I donate blood?
+    <div class="faq-content">Whole blood: every 56 days. Platelets: every 7 days. Plasma: every 28 days.</div>
+  </div>
+  <div class="faq">Q. Will I feel weak after donating?
+    <div class="faq-content">Most donors feel fine. Slight fatigue may occur but rest, hydrate, and eat iron-rich foods.</div>
+  </div>
+  <div class="faq">Q. Is blood donation healthy?
+    <div class="faq-content">Yes! Reduces iron overload, improves circulation, and helps detect hidden health issues.</div>
+  </div>
+  <div class="faq">Q. What should I do before donating?
+    <div class="faq-content">Eat a healthy meal 3–4 hours before, avoid oily foods, stay hydrated, avoid alcohol or smoking.</div>
+  </div>
+  <div class="faq">Q. What should I eat after donating?
+    <div class="faq-content">Eat iron-rich foods (spinach, beans, meat) and vitamin C fruits (oranges, berries).</div>
+  </div>
+</section>
+
+<script>
+  // FAQ Toggle
+  document.querySelectorAll('.faq').forEach(faq => {
+    faq.addEventListener('click', () => {
+      faq.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>

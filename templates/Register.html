@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood Donor Registration</title>
+  <style>
+    :root {
+      --bg: #e0f7ff; 
+      --card: #ffffffcc;
+      --text: #1b1b1b;
+      --muted: #555555;
+      --accent: #f62261;
+      --secondary: #208ef4;
+      --glow: #ffdde1;
+      --highlight: #f8b6c3;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Go Home button */
+    .back-btn {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      background: rgba(255,255,255,0.95);
+      color: var(--accent);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+      background: white;
+      color: #b61b44;
+    }
+    .back-btn .icon { font-size: 14px; }
+
+    .form-wrapper {
+      max-width: 500px;
+      width: 90%;
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      backdrop-filter: blur(8px);
+      position: relative; /* needed for absolute button */
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 10px;
+      display: block;
+      color: var(--muted);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 6px var(--secondary);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      background: var(--secondary);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: var(--accent);
+      transform: scale(1.02);
+    }
+
+    .success {
+      text-align: center;
+      color: green;
+      font-weight: 600;
+      margin-top: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <!-- Go to Home button -->
+    <a class="back-btn" href="{{ url_for('index') }}">
+      <span class="icon">←</span> Home
+    </a>
+
+    <h2>Donor Registration</h2>
+    <form id="registerForm" method="POST" action="/register" onsubmit="return validateForm()">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" min="18" max="65" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">--Select--</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+
+      <label for="blood_group">Blood Group</label>
+      <select id="blood_group" name="blood_group" required>
+        <option value="">--Select--</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>AB+</option><option>AB-</option>
+        <option>O+</option><option>O-</option>
+      </select>
+
+      <label for="area">Area</label>
+      <input type="text" id="area" name="area" required>
+
+      <label for="weight">Weight (kg)</label>
+      <input type="number" id="weight" name="weight" step="0.1" required>
+
+      <label for="hemoglobin">Hemoglobin (g/dl)</label>
+      <input type="number" id="hemoglobin" name="hemoglobin" step="0.1" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <p class="success" id="successMsg" style="display: {{ 'block' if success else 'none' }};">
+      ✅ Registration Successful!
+    </p>
+  </div>
+
+  <script>
+    function validateForm() {
+      let weight = parseFloat(document.getElementById("weight").value);
+      let hb = parseFloat(document.getElementById("hemoglobin").value);
+      let age = parseInt(document.getElementById("age").value);
+
+      if (weight < 45) {
+        alert("❌ Weight must be at least 45 kg to donate blood.");
+        return false;
+      }
+      if (hb < 12.5) {
+        alert("❌ Hemoglobin must be at least 12.5 g/dl to donate blood.");
+        return false;
+      }
+      if (age < 18 || age > 65) {
+        alert("❌ Age must be between 18 and 65 years.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <title>Connect with us & save lives around your location </title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Neuton:ital@1&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@300&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=NTR&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+       * {
+           margin: 0px;
+           padding: 0;
+       }
+
+       header {
+           background-color: white;
+           height: 18%;
+           width: 100%;
+           z-index: 10;
+           position: fixed;
+           font-weight: 100;
+       }
+
+       .header-logo {
+           font-size: 10px;
+           float: left;
+           padding-left: 30px;
+       }
+
+       .header-logo > img {
+           width: 70%;
+       }
+
+       .header-list ul li a {
+           text-decoration: none;
+           display: block;
+           text-transform: uppercase;
+           color: black;
+           font-size: 20px;
+           font-family: 'Raleway', sans-serif;
+           letter-spacing: 2px;
+           font-weight: 600;
+           padding: 20px;
+           transition: all ease 0.5s;
+       }
+
+       .header-list ul li {
+           float: right;
+           padding-left: 30px;
+           padding-top: 30px;
+           list-style: none;
+           padding-right: 40px;
+       }
+
+       header ul li a:hover {
+           background-color: rgba(220, 20, 60);
+           color: white;
+       }
+
+       main {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           background: url(./Images/div.jpg);
+           height: 70%;
+       }
+
+       .box {
+           width: 600px;
+           padding-top: 15%;
+           border-bottom-left-radius: 10px;
+           border-bottom-right-radius: 10px;
+           border-bottom: 20px solid #DC143C;
+       }
+
+       .box h2 {
+           color: #fff;
+           background: #DC143C;
+           padding: 20px;
+           font-size: 28px;   /* increased font size */
+           font-weight: 700;
+           border-top-left-radius: 10px;
+           border-top-right-radius: 10px;
+           font-family: 'Josefin Sans', sans-serif;
+           text-align: center;
+       }
+
+       .box .des li {
+           list-style: none;
+           padding: 14px;
+           width: 96%;
+           background: #fff;
+           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+           transition: transform 0.5s;
+           font-family: 'Patrick Hand', cursive;
+           font-size: 22px;   /* increased font size */
+       }
+
+       .box .des li:hover {
+           transform: scale(1.1);
+           z-index: 100;
+           background: #DB7093;
+           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+           color: #fff;
+           cursor: pointer;
+       }
+
+       .box .des li span {
+           width: 24px;
+           height: 24px;
+           text-align: center;
+           line-height: 24px;
+           background: #DB7093;
+           color: #fff;
+           display: inline-block;
+           border-radius: 50%;
+           margin-right: 12px;
+           font-size: 14px;
+           font-weight: 600;
+           transform: translateY(-2px);
+       }
+
+       .box .des li:hover span {
+           background: #fff;
+           color: #DB7093;
+       }
+
+       .hero-btn {
+           display: inline-block;
+           text-decoration: none;
+           color: black;
+           border: 1px solid #fff;
+           padding: 14px 30px;
+           font-size: 22px;   /* increased font size */
+           font-weight: 600;
+           background: transparent;
+           position: relative;
+           cursor: pointer;
+           width: 20vh;
+           letter-spacing: 3px;
+           height: 8vh;
+           font-family: 'Patrick Hand SC', cursive;
+           margin-top: 15px;
+       }
+
+       .text-box {
+           width: 100%;
+           color: #fff;
+           text-align: center;
+           font-family: 'Neuton', serif;
+           border: none;
+       }
+
+       .hero-btn:hover {
+           border: 1px solid #DC143C;
+           background: #DC143C;
+           transition: 0.5s;
+           color: #fff;
+           width: 90%;
+       }
+
+       /* Footer */
+       footer {
+           position: relative;
+           top: 70px;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           background: #111;
+           width: 100%;
+           color: #fff;
+           height: 100px;
+       }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="header-logo"><img src="static/others/bb_logo(white).png"></div>
+            <div class="header-list">
+                <ul>
+                    <li><a href="{{ url_for('find_donour') }}">Accept</a></li>
+                    <li><a href="{{ url_for('eligibility') }}">Eligibility</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="box">
+            <h2>Connect with us & save lives around your location</h2>
+            <ul class="des">
+                <li class="steps"><span>1</span> Register 🧍🏻</li>
+                <li class="steps"><span>2</span> Post a Blood request 🩸</li>
+                <li class="steps"><span>3</span> Respond ✅</li>
+                <li class="steps"><span>4</span> Get notified 📱</li>
+                <li class="steps"><span>5</span> Forever Free 💲❌</li>
+                <li class="steps"><span>6</span> Save a Life 🩸🧬</li>
+            </ul>
+
+            <div class="text-box">
+                <a href="{{ url_for('register') }}" class="hero-btn">Register</a>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+</body>
+</html>
